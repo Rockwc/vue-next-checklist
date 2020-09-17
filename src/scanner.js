@@ -18,13 +18,13 @@ function matchLine(line, report, lineNo = 0) {
 
 function report(lineNo, line, rule) {
   console.log(`  ${lineNo}:${line}`);
-  console.log(`  \t${rule.level}\t${rule.message}`);
+  console.log(`  +\t${rule.level}\t${rule.message}`);
   if (rule.reference instanceof Array) {
     rule.reference.forEach((v) => {
-      console.log(`  reference Doc:\t${v}`);
+      console.log(`  |Reference:\t${v}`);
     });
   } else {
-    console.log(`  reference Doc:\t${rule.reference}`);
+    console.log(`  |Reference:\t${rule.reference}`);
   }
 }
 
@@ -40,17 +40,3 @@ module.exports.run = (scanPath = path.resolve("."), pattern = ".{vue,js}") => {
     });
 };
 module.exports.matchLine = matchLine;
-
-// function printInject(line) {
-//   if (/inject: \[/.exec(line)) {
-//     return `Inject\t${line}\n`;
-//   }
-//   return "";
-// }
-
-// function printComponent(line) {
-//   if (/from 'element-ui\/packages/.exec(line)) {
-//     return `Component\t${line}\n`;
-//   }
-//   return "";
-// }
