@@ -17,9 +17,15 @@ function matchLine(line, report, lineNo = 0) {
 }
 
 function report(lineNo, line, rule) {
-  console.log(`  ${lineNo}:\t${line}`);
-  console.log(`  ${rule.level}\t${rule.message}`);
-  console.log(`  reference Doc:\t${rule.reference}`);
+  console.log(`  ${lineNo}:${line}`);
+  console.log(`  \t${rule.level}\t${rule.message}`);
+  if (rule.reference instanceof Array) {
+    rule.reference.forEach((v) => {
+      console.log(`  reference Doc:\t${v}`);
+    });
+  } else {
+    console.log(`  reference Doc:\t${rule.reference}`);
+  }
 }
 
 module.exports.run = (scanPath = path.resolve("."), pattern = ".{vue,js}") => {
