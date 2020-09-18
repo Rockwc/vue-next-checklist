@@ -3,7 +3,7 @@
 > 1. 自动标注Vue3.0移除和变化的API
 > 2. 目录自动扫描
 
-
+![image-20200918103426497](/Users/xiaran/source/vue-next-checklist/assets/image-20200918103426497.png)
 
 ## Install
 ```bash
