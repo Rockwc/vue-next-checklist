@@ -1,6 +1,7 @@
 {
 	"name": "vuenextchecklist",
 	"displayName": "vuenextchecklist",
+	"publisher": "ezshine",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
