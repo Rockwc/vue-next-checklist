@@ -8,7 +8,8 @@ const escapeRegExp = require("./escapeRegExp");
 
 function matchLine(line, report, lineNo = 0) {
   policy.forEach((rule) => {
-    const reg = new RegExp(escapeRegExp(rule.keyword));
+    const reg = new RegExp(rule.keyword);
+    // const reg = new RegExp(escapeRegExp(rule.keyword));
     const isMatch = line.match(reg);
     if (isMatch) {
       report(lineNo, line, rule);
@@ -17,8 +18,13 @@ function matchLine(line, report, lineNo = 0) {
 }
 
 function report(lineNo, line, rule) {
-  console.log(`  ${lineNo}:${line}`);
-  console.log(`  +\t${rule.level}\t${rule.message}`);
+  console.log(chalk.green(`  ${lineNo}:${line}`));
+  if(rule.level === 'error'){
+    console.log(chalk.red(`  +\t${rule.level}\t${rule.message}`));
+  }else {
+    console.log(chalk.yellow(`  +\t${rule.level}\t${rule.message}`));
+  }
+ 
   if (rule.reference instanceof Array) {
     rule.reference.forEach((v) => {
       console.log(`  |Reference:\t${v}`);
